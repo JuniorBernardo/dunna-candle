@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #ffffff;
+  --color-mist: #f6f4f1;
+  --color-line: #e7e3dd;
+  --color-ink: #141414;
+  --color-smoke: #77716a;
+  --color-gold: #a8875a;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #111111;
+  --color-mist: #1a1a19;
+  --color-line: #2c2a27;
+  --color-ink: #efebe5;
+  --color-smoke: #9b948b;
+  --color-gold: #c4a476;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Logo original (preto). No escuro, inverte e some com o fundo. */
+.brand-logo {
+  mix-blend-mode: multiply;
+}
+html[data-theme="dark"] .brand-logo {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+/* Fotos de produto têm fundo branco: no escuro, um leve escurecimento integra melhor */
+html[data-theme="dark"] .product-img {
+  filter: brightness(0.92);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Título de seção: pequeno, maiúsculo e espaçado */
+.eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Link com sublinhado que cresce */
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s ease;
+  padding-bottom: 2px;
+}
+.link-line:hover {
+  background-size: 100% 1px;
+}
